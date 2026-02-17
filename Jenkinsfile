@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE   = "sheetalkadolkar/e-com"
+        IMAGE   = "sheetalkadolkar/e-com:latest"
         TAG     = "${BUILD_NUMBER}"
         CLUSTER = "my-eks-cluster"
         REGION  = "us-east-1"
