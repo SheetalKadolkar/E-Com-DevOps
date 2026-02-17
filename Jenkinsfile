@@ -51,8 +51,12 @@ pipeline {
             steps {
                 sh '''
                 kubectl get nodes
-                kubectl apply -f k8s/deployment.yaml
+
                 kubectl apply -f k8s/service.yaml
+
+                kubectl set image deployment/ecommerce-deploy \
+                ecommerce=$IMAGE:$TAG
+
                 kubectl rollout status deployment/ecommerce-deploy
                 '''
             }
