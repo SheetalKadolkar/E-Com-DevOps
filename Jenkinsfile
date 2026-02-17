@@ -51,10 +51,7 @@ pipeline {
             steps {
                 sh '''
                 kubectl get nodes
-
-                # Update image dynamically before deploy
-                sed -i "s|IMAGE_PLACEHOLDER|$IMAGE:$TAG|g" k8s/deployment.yaml
-
+              
                 kubectl apply -f k8s/deployment.yaml
                 kubectl apply -f k8s/service.yaml
 
@@ -63,14 +60,6 @@ pipeline {
             }
         }
     }
-
-    post {
-        success {
-            echo "✅ Deployment Successful"
-        }
-        failure {
-            echo "❌ Deployment Failed"
-        }
-    }
+    
 }
 `
