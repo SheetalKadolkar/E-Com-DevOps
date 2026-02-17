@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE   = "sheetalkadolkar/e-com:latest"
+        IMAGE   = "sheetalkadolkar/e-com"
         TAG     = "${BUILD_NUMBER}"
         CLUSTER = "my-eks-cluster"
         REGION  = "us-east-1"
@@ -51,15 +51,11 @@ pipeline {
             steps {
                 sh '''
                 kubectl get nodes
-              
                 kubectl apply -f k8s/deployment.yaml
                 kubectl apply -f k8s/service.yaml
-
                 kubectl rollout status deployment/ecommerce-deploy
                 '''
             }
         }
     }
-    
 }
-
