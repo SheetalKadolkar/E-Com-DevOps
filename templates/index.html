@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DevOps E-Commerce Store</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>🛒 DevOps E-Commerce Store</h1>
+
+<div id="toast"></div>
+
+<div class="grid">
+{% for p in products %}
+<div class="card">
+    <img src="{{p.image}}">
+    <h3>{{p.name}}</h3>
+    <p>₹ {{p.price}}</p>
+
+    <button onclick="addCart({{p.id}})">Add to Cart</button>
+    <button class="buy" onclick="buyNow({{p.id}})">Buy Now</button>
+</div>
+{% endfor %}
+</div>
+
+<h2>Cart</h2>
+<ul id="cart"></ul>
+<h3 id="total"></h3>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
